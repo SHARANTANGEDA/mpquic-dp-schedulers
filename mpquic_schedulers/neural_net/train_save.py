@@ -3,18 +3,21 @@ import os
 import time
 
 import pandas as pd
+
 import tensorflow as tf
-from sklearn.model_selection import train_test_split
 from tensorflow.python.keras.layers import Dense
 from tensorflow.python.keras.models import Sequential
 
+from sklearn.model_selection import train_test_split
 
+
+# path_id,cwnd_1,cwnd_2,in_flight_1,in_flight_2,rtt_1,rtt_2,avg_rtt_1,avg_rtt_2
 def load_data(training_file):
 	df = pd.read_csv(training_file)
 	if len(df) <= 1:
 		return [], [], [], True
-	features = df[:, 1:]
-	target = df[:, 0]
+	features = df.iloc[:, 1:]
+	target = df.iloc[:, 0]
 	target_map = {}
 	for idx, value in enumerate(target.unique()):
 		target_map[value] = idx
