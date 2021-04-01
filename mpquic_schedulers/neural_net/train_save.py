@@ -33,7 +33,7 @@ def train_save_model(training_file, epochs, output_dir):
 	train_X, test_X, train_Y, test_Y = train_test_split(features, target, test_size=0.1)
 	train_X, val_X, train_Y, val_Y = train_test_split(train_X, train_Y, test_size=0.1)
 	model = Sequential()
-	model.add(Dense(12, input_dim=8, activation='linear', name="input"))
+	model.add(Dense(12, input_shape=(8,), activation='linear', name="input"))
 	model.add(Dense(8, activation='relu'))
 	model.add(Dense(1, activation='sigmoid', name="output"))
 
