@@ -11,17 +11,22 @@ from tensorflow.python.keras.models import Sequential
 
 def load_data(training_file):
 	df = pd.read_csv(training_file)
+	if len(df) <= 1:
+		return [], [], [], True
 	features = df[:, 1:]
 	target = df[:, 0]
 	target_map = {}
 	for idx, value in enumerate(target.unique()):
 		target_map[value] = idx
 
-	return features, target, target_map
+	return features, target, target_map, False
 
 
 def train_save_model(training_file, epochs, output_dir):
-	features, target, target_map = load_data(training_file)
+	features, target, target_map, should_skip = load_data(training_file)
+	if should_skip:
+		logging.info("Skipping Model training, not enough data")
+		return
 	train_X, train_Y, test_X, test_Y = train_test_split(features, target, test_size=0.10)
 	train_X, train_Y, val_X, val_Y = train_test_split(train_X, train_Y, test_size=0.1)
 	model = Sequential()
