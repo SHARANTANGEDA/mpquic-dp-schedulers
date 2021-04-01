@@ -30,8 +30,8 @@ def train_save_model(training_file, epochs, output_dir):
 	if should_skip:
 		logging.info("Skipping Model training, not enough data")
 		return
-	train_X, train_Y, test_X, test_Y = train_test_split(features, target, test_size=0.10)
-	train_X, train_Y, val_X, val_Y = train_test_split(train_X, train_Y, test_size=0.1)
+	train_X, test_X, train_Y, test_Y = train_test_split(features, target, test_size=0.1)
+	train_X, val_X, train_Y, val_Y = train_test_split(train_X, train_Y, test_size=0.1)
 	model = Sequential()
 	model.add(Dense(12, input_dim=8, activation='linear', name="input"))
 	model.add(Dense(8, activation='relu'))
