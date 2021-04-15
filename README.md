@@ -1,2 +1,3 @@
-# mpquic-dp-schedulers
-SDK containing MP-QUIC DP Schedulers, which can be imported and used inside GoLang
+# mpquic-optimal-split-scheduler
+
+LSTM Based Deep Learning Model to train the optimal split ratio for optimum_split scheduler
