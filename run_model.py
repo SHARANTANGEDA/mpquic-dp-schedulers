@@ -11,7 +11,7 @@ parser.add_argument('--training_file_path', type=str, dest="training_file_path",
 parser.add_argument('--output_dir', type=str, dest="output_dir", help="Model is saved into this directory",
                     default="output")
 parser.add_argument('--epochs', type=int, dest="epochs", help="Number of epochs to train for",
-                    default=10)
+                    default=5)
 args = parser.parse_args()
 
 logging.basicConfig(filename=os.path.join("/Users/tangeda.sai/prac/mpquic-optimal-split-models/logs", f'{datetime.now()}.txt'), filemode='w+',
